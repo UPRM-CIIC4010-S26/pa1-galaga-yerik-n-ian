@@ -185,6 +185,7 @@ void Program::PlayerReset() {
 
 void Program::Reset() {
     Enemy::enemies.clear();
+    Program();
     StdEnemy::attackInProgress = false;
     player = new Player((GetScreenWidth() / 2) - 15, GetScreenHeight() * 0.75f);
     respawnCooldown = 1080;
@@ -192,4 +193,5 @@ void Program::Reset() {
     count = 0;
     delay = 0;
     lives = 3;
+    
 }
