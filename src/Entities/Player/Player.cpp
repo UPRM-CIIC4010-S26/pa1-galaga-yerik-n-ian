@@ -30,10 +30,10 @@ void Player::update() {
     }
 }
 
-void Player::keyInputs() {
-    if (IsKeyDown('A')) this->position.first -= this->speed;
-    if (IsKeyDown('D')) this->position.first += this->speed;
-    if (IsKeyDown(KEY_SPACE)) this->attack();
+void Player::keyInputs(int leftKey, int rightKey, int shootKey) {
+    if (IsKeyDown(leftKey)) this->position.first -= this->speed;
+    if (IsKeyDown(rightKey)) this->position.first += this->speed;
+    if (IsKeyDown(shootKey)) this->attack();
 }
 
 void Player::attack() {

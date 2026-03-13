@@ -21,6 +21,6 @@ class Player {
 
         void draw();
         void update();
-        void keyInputs();
+        void keyInputs(int leftKey = 'A', int rightKey = 'D', int shootKey = KEY_SPACE);
         void attack();
 };

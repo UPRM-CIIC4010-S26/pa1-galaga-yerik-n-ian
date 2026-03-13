@@ -13,6 +13,7 @@ class Program {
     private:
         Background background = Background();
         Player* player = new Player((GetScreenWidth() / 2) - 15, GetScreenHeight() * 0.75f);
+        Player* player2 = nullptr;
         int respawnCooldown = 1080;
         int respawns = 0;
         int count = 0;
@@ -26,6 +27,8 @@ class Program {
         bool startup = true;
         bool paused = false;
         bool gameOver = false;
+        bool coop_selected = false;
+        bool coop_enabled = false;
 
     public:
         Program();
@@ -37,7 +40,7 @@ class Program {
         void DrawPauseScreen();
         void DrawGameOver();
         void KeyInputs();
-        void PlayerReset();
+        void PlayerReset(Player* target);
         void Reset();
         void AddScore(int points);
           
