@@ -12,7 +12,7 @@ Don't forget that you must also fill out an evaluation form in Moodle to conside
 ## Grading
 
 (802-25-8256) (Yerik E. Fernandez Mercado) (yerik.fernandez@upr.edu)
-(STUDENT NUMBER HERE) (STUDENT NAME HERE) (STUDENT EMAIL HERE)
+(802-25-7993) (Ian M. Figueroa Reyes) (ian.figueroa6@upr.edu)
 
 Any project that doesn't compile will receive a 0.
 
@@ -22,3 +22,10 @@ If a partner has no commits in the repositories, they will receive a 0.
 
 ## Student Notes
 If you have any bonus specs, bonus or any details the TA's should know, you should include it here:
+
+* Implemented bonus co-op mode with separate P1/P2 lives and a shared score.
+
+* Added Easy/Medium/Hard difficulty selection. Difficulty changes enemy firing and respawn pacing, with Hard mode scaling much more aggressively as score increases.
+
+* Hard mode gives players triple shot, and DyEnemy enemies have increased health on Hard for balance.
+
