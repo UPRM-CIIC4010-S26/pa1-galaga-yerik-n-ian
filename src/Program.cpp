@@ -171,33 +171,34 @@ void Program::ManageEnemyRespawns()
 {
     delay = std::max(delay - 1, 0);
 
-    int baseRespawn = 620;
-    int decay = 2 + (score / 1800);
-    int decayCap = 4;
-    int burstTrigger = 4;
-    int burstCount = 3;
-    int spawnDelayFrames = 22;
+    int baseRespawn = 420;
+    int decay = 3 + (score / 1600);
+    int decayCap = 6;
+    bool capDecay = true;
+    int burstTrigger = 3;
+    int burstCount = 4;
+    int spawnDelayFrames = 18;
 
     if (activeDifficulty == 0)
     {
-        baseRespawn = 900;
-        decay = 1 + (score / 2600);
-        decayCap = 2;
+        baseRespawn = 700;
+        decay = 1 + (score / 2400);
+        decayCap = 3;
         burstTrigger = 4;
         burstCount = 2;
-        spawnDelayFrames = 28;
+        spawnDelayFrames = 26;
     }
     else if (activeDifficulty == 2)
     {
-        baseRespawn = 420;
-        decay = 3 + (score / 1400);
-        decayCap = 6;
-        burstTrigger = 4;
-        burstCount = 4;
-        spawnDelayFrames = 18;
+        baseRespawn = 240;
+        decay = 5 + (score / 1000);
+        capDecay = false;
+        burstTrigger = 2;
+        burstCount = 6;
+        spawnDelayFrames = 10;
     }
 
-    if (decay > decayCap)
+    if (capDecay && decay > decayCap)
         decay = decayCap;
 
     respawnCooldown = std::max(respawnCooldown - decay, 0);
@@ -248,6 +249,7 @@ void Program::ManageEnemyRespawns()
         delay = spawnDelayFrames;
     }
 }
+
 
 
 void Program::DrawStartup()
@@ -344,6 +346,11 @@ void Program::KeyInputs()
             {
                 player2 = nullptr;
             }
+
+            respawnCooldown = (activeDifficulty == 0) ? 700 : (activeDifficulty == 2 ? 240 : 420);
+            respawns = 0;
+            count = 0;
+            delay = 0;
 
             startup = false;
         }
@@ -474,7 +481,7 @@ void Program::Reset()
         player = new Player((GetScreenWidth() / 2) - 15, GetScreenHeight() * 0.75f);
         player2 = nullptr;
     }
-    respawnCooldown = (activeDifficulty == 0) ? 900 : (activeDifficulty == 2 ? 420 : 620);
+    respawnCooldown = (activeDifficulty == 0) ? 700 : (activeDifficulty == 2 ? 240 : 420);
     respawns = 0;
     count = 0;
     delay = 0;

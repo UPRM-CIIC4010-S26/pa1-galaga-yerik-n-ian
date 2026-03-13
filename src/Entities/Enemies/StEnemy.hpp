@@ -7,11 +7,11 @@ class StEnemy : public Enemy {
 
     public:
         StEnemy(float x, float y) : Enemy(x, y) {  
-            this->cooldown = Enemy::DifficultyRoll(180, 720, 120, 480, 90, 300);
+            this->cooldown = Enemy::DifficultyRoll(180, 720, 120, 480, 45, 150);
             this->scoreValue = 150;
         }
         StEnemy(float x, float y, bool newSpawn) : Enemy(x, y) {     
-            this->cooldown = Enemy::DifficultyRoll(210, 780, 150, 540, 120, 360);
+            this->cooldown = Enemy::DifficultyRoll(210, 780, 150, 540, 60, 180);
             this->scoreValue = 150;
             this->spawning = newSpawn;
         }

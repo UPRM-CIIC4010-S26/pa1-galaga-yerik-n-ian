@@ -11,7 +11,7 @@ class DyEnemy : public Enemy {
     public:
         DyEnemy(float x, float y) : Enemy(x, y) { 
             this->cooldown = GetRandomValue(90, 300);
-            this->health = 1; 
+            this->health = Enemy::DifficultyValue(1, 1, 2); 
             this->scoreValue = 200;
         }
 

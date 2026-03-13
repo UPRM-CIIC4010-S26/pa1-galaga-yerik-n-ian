@@ -85,7 +85,7 @@ void StdEnemy::update(std::pair<float, float> pos, HitBox target) {
     if (this->cooldown <= 0) {
         Projectile::projectiles.push_back(Projectile(Projectile(position.first + + this->hitBox.box.width / 2, position.second, 1)));
         PlaySound(SoundManager::shoot);
-        this->cooldown = Enemy::DifficultyRoll(360, 960, 240, 720, 120, 360);
+        this->cooldown = Enemy::DifficultyRoll(360, 960, 240, 720, 60, 180);
     }
 }
 
@@ -109,7 +109,7 @@ void StdEnemy::attack(HitBox target) {
             this->position.first = GetScreenWidth() / 2;
             this->position.second = 0;
             this->spawning = true;
-            this->specialCooldown = Enemy::DifficultyRoll(1200, 2400, 600, 1500, 300, 900);
+            this->specialCooldown = Enemy::DifficultyRoll(1200, 2400, 600, 1500, 180, 540);
             attackInProgress = false;
         }
     }
