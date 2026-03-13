@@ -33,7 +33,7 @@ void StEnemy::update(std::pair<float, float> pos, HitBox target) {
     if (this->cooldown <= 0) {
         Projectile::projectiles.push_back(Projectile(Projectile(position.first + + this->hitBox.box.width / 2, position.second, 1)));
         PlaySound(SoundManager::shoot);
-        this->cooldown = GetRandomValue(120, 600);
+        this->cooldown = Enemy::DifficultyRoll(180, 720, 120, 480, 90, 300);
     }
 }
 

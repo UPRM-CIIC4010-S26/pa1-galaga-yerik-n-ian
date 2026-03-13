@@ -6,13 +6,12 @@ class StEnemy : public Enemy {
         float angle = 90;
 
     public:
-        StEnemy(float x, float y) : Enemy(x, y) { 
-            this->cooldown = GetRandomValue(90, 600);
+        StEnemy(float x, float y) : Enemy(x, y) {  
+            this->cooldown = Enemy::DifficultyRoll(180, 720, 120, 480, 90, 300);
             this->scoreValue = 150;
         }
-
-        StEnemy(float x, float y, bool newSpawn) : Enemy(x, y){
-            this->cooldown = GetRandomValue(120, 600);
+        StEnemy(float x, float y, bool newSpawn) : Enemy(x, y) {     
+            this->cooldown = Enemy::DifficultyRoll(210, 780, 150, 540, 120, 360);
             this->scoreValue = 150;
             this->spawning = newSpawn;
         }

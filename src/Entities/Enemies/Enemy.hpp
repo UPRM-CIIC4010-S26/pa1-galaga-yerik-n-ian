@@ -22,6 +22,7 @@ class Enemy {
 
         inline static float direction = 0.5;
         inline static int directionChange = 100;
+        inline static int difficultyLevel = 1; // 0 easy, 1 medium, 2 hard
         inline static std::vector<std::pair<std::pair<float, float>, Enemy*>> enemies;
 
         Enemy() {}
@@ -32,6 +33,19 @@ class Enemy {
             hitBox = HitBox(x, y, 30, 30);
         }
 
+        static int DifficultyValue(int easy, int medium, int hard) {
+            if (difficultyLevel == 0) return easy;
+            if (difficultyLevel == 2) return hard;
+            return medium;
+        }
+
+        static int DifficultyRoll(int easyMin, int easyMax, int mediumMin, int mediumMax, int hardMin, int hardMax) {
+            return GetRandomValue(
+                DifficultyValue(easyMin, mediumMin, hardMin),
+                DifficultyValue(easyMax, mediumMax, hardMax)
+            );
+        }
+
         virtual void draw() = 0;
         virtual void update(std::pair<float, float> pos, HitBox target) = 0;
         virtual void attack(HitBox target) = 0;
@@ -39,10 +53,10 @@ class Enemy {
         void frameChange() {
             frameCooldown--;
 
-             if (frameCooldown <= 0) {
+            if (frameCooldown <= 0) {
                 frame = !frame;
                 frameCooldown = 30;
-             }
+            }
         }
 
         static int ManageEnemies(HitBox target) {
@@ -89,6 +103,3 @@ class Enemy {
             return pointsEarned;
         }
 };
-
-
-

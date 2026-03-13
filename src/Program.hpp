@@ -14,11 +14,12 @@ class Program {
         Background background = Background();
         Player* player = new Player((GetScreenWidth() / 2) - 15, GetScreenHeight() * 0.75f);
         Player* player2 = nullptr;
-        int respawnCooldown = 1080;
+        int respawnCooldown = 620;
         int respawns = 0;
         int count = 0;
         int delay = 0;
-        int lives = 3;
+        int livesP1 = 3;
+        int livesP2 = 0;
         int pauseFrames = 0;
         int score = 0;
         int nextLifeScore = 1000;
@@ -29,6 +30,9 @@ class Program {
         bool gameOver = false;
         bool coop_selected = false;
         bool coop_enabled = false;
+        int selectedDifficulty = 1;
+        int activeDifficulty = 1;
+        bool clearProjectilesNextFrame = false;
 
     public:
         Program();
@@ -41,8 +45,9 @@ class Program {
         void DrawGameOver();
         void KeyInputs();
         void PlayerReset(Player* target);
+        bool IsPlayerAlive(Player* target);
         void Reset();
         void AddScore(int points);
-          
+
         ~Program() {}
 };

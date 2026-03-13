@@ -8,6 +8,7 @@ class Player {
     private:
         int cooldown = 30;
         int speed = 3;
+
     
     public:
         std::pair<float, float> position;

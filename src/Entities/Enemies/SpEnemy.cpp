@@ -58,7 +58,7 @@ void SpEnemy::update(std::pair<float, float> pos, HitBox target) {
     if (this->cooldown <= 0) {
         Projectile::projectiles.push_back(Projectile(Projectile(position.first + 15, position.second, 1)));
         PlaySound(SoundManager::shoot);
-        this->cooldown = GetRandomValue(360, 1380);
+        this->cooldown = Enemy::DifficultyRoll(540, 1200, 300, 720, 180, 420);
     }
 }
 
@@ -95,7 +95,7 @@ void SpEnemy::attack(HitBox target) {
                 this->angle = 90;
                 this->spawning = true;
                 this->stop = false;
-                this->specialCooldown = GetRandomValue(1380, 3600);
+                this->specialCooldown = Enemy::DifficultyRoll(1800, 3000, 900, 1800, 420, 960);
             }
         }
     }
