@@ -1,4 +1,5 @@
 #include "Player.hpp"
+#include "Enemy.hpp"
 
 void Player::draw() {
     if (HitBox::drawHitbox) this->hitBox.draw();
@@ -38,8 +39,18 @@ void Player::keyInputs(int leftKey, int rightKey, int shootKey) {
 
 void Player::attack() {
     if (cooldown <= 0) {
+        if(Enemy::difficultyLevel == 2){
+        Projectile::projectiles.push_back(Projectile((position.first + this->hitBox.box.width / 2) - 10, this->position.second, 95, 0));
+        Projectile::projectiles.push_back(Projectile((position.first + + this->hitBox.box.width / 2), position.second, 0));
+        Projectile::projectiles.push_back(Projectile((position.first + this->hitBox.box.width / 2) + 10, this->position.second, 85, 0));
+        PlaySound(SoundManager::shoot);
+        cooldown = 30;
+
+        }
+        else{
         Projectile::projectiles.push_back(Projectile(position.first + + this->hitBox.box.width / 2, position.second, 0));
         PlaySound(SoundManager::shoot);
         cooldown = 30;
     }
+}
 }
